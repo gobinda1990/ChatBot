@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptionUtil {
 	
-	private static final String SECRET_KEY = "MySuperSecretKey"; 
+	private static final String SECRET_KEY = "MySecretKey12345"; 
 
     public static String encrypt(String plainText) throws Exception {
         SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
@@ -27,7 +27,7 @@ public class EncryptionUtil {
 
     public static void main(String args[]) throws Exception {
     	
-       String enqdt="kV+RtvvW6WJabngNlmXTvWjFIJXsKeUsKfoQIDGyoUxrLcg9ZeNCaN2k5WkQvxS5FVW3deuO0Wl+5WJ7yn9mhMDXhUIsYkjWuJVsvL02ED66/P53mrIOns3/rM9qi/rEORkn9yJiIlhUJYB8Nheudg==";
+       String enqdt="cOhVFgSWsK2CpxBslej5ba7X3y1rq2Zgh32rXwjD0a84xH/ExqTPnN4BEstAvublfNWzLKYVWNn2TJEiuJDQOzGtcae9H1uiQ5LI0bLxRptLXxM360HBoMuUST8bAELi04Vj35s35mEMTI4qPafRPQ==";
        String dec=EncryptionUtil.decrypt(enqdt);
        System.out.println(dec);
     }

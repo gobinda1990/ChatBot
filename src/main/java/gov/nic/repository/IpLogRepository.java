@@ -13,8 +13,9 @@ public class IpLogRepository {
     private final JdbcTemplate jdbcTemplate;
     
     public void saveIpLog(String ip, String path,String requestParams, String status) {
-        String sql = "INSERT INTO IP_LOG (IP_ADDRESS, REQUEST_URI, REQUEST_PARAMS, STATUS,LOG_TIME) VALUES (?, ?, ?,?,?)";
-        jdbcTemplate.update(sql, ip, path, requestParams,status,new Timestamp(System.currentTimeMillis()));
+        String sql = "INSERT INTO WBCOMTAX_GST_API_LOG_DETAILS (IP_ADDRESS, REQUEST_URI, REQUEST_PARAMS,API_NAME,"
+        		+ " API_VERSION, STATUS,LOG_DT) VALUES (?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, ip, path, requestParams,"ChatBot","V1",status,new Timestamp(System.currentTimeMillis()));
     }
 
 }

@@ -19,7 +19,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/gstin")
+//@RequestMapping("/api/v1/gstin")
+@RequestMapping("/api/gstin")
 @RequiredArgsConstructor
 public class GstinController {
 
@@ -27,7 +28,8 @@ public class GstinController {
 
 	private final GstService gstService;
 
-	@GetMapping("/details")
+//	@GetMapping("/details")
+	@GetMapping("/getDealerDetails")
 	public ResponseEntity<?> getGstinDetails(@RequestParam String gstin,@RequestHeader("X-API-KEY") String apiKey,
             HttpServletRequest request) {
 		logger.info("Received  GSTIN request: {}", gstin);

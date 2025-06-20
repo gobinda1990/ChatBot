@@ -8,8 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import gov.nic.model.ApiResponse;
 import gov.nic.service.IpLogService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -35,14 +40,19 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 		String clientIp = getClientIp(request);
 		String requestUri = request.getRequestURI();
 		String requestParams = getRequestParams(request);
+		
 		logger.info("Request URI: {}", requestUri);
 		logger.info("Request Params: {}", requestParams);
 		if (!expectedApiKey.equals(apiKey)) {
 			logger.warn("Unauthorized access to {} from IP {} with key: {}", requestUri, clientIp, apiKey);
 			ipLogService.logIp(clientIp, requestUri, requestParams, "FAIL");
-			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-			response.getWriter().write("Unauthorized - Invalid API Key");
-			return;
+			response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            response.setContentType("application/json");
+            ApiResponse<Void> apiResponse = new ApiResponse<>(401, "Unauthorized - Invalid API Key", null);
+            ObjectMapper mapper = new ObjectMapper();
+            String responseBody = mapper.writeValueAsString(apiResponse);
+            response.getWriter().write(responseBody);
+            return;
 		}
 		ipLogService.logIp(clientIp, requestUri, requestParams, "SUCCESS");
 		filterChain.doFilter(request, response);

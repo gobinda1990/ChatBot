@@ -21,7 +21,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/hrms")
+//@RequestMapping("/api/v1/hrms")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class HrmsController {
 	
@@ -29,7 +30,8 @@ public class HrmsController {
 	private static final Logger logger=LoggerFactory.getLogger(HrmsController.class);	
 	private final HrmsService hrmsService;
 	
-	@GetMapping("/details")
+//	@GetMapping("/details")
+	@GetMapping("/userInfo")
 	public ResponseEntity<?> getHrmsDetails(@RequestParam String hrmsCode,@RequestHeader("X-API-KEY") String apiKey,
             HttpServletRequest request) {
 	   
