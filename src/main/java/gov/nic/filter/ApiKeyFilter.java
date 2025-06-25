@@ -1,6 +1,7 @@
 package gov.nic.filter;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -11,11 +12,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import gov.nic.model.ApiResponse;
 import gov.nic.service.IpLogService;
+import gov.nic.service.RateLimiterService;
+import io.github.bucket4j.ConsumptionProbe;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,6 +32,9 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 
 	@Autowired
 	private IpLogService ipLogService;
+	
+	@Autowired
+	private RateLimiterService rateLimiterService;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -54,6 +58,24 @@ public class ApiKeyFilter extends OncePerRequestFilter {
             response.getWriter().write(responseBody);
             return;
 		}
+		ConsumptionProbe probe = rateLimiterService.tryConsume(apiKey);
+		if (!probe.isConsumed()) {
+	        long retryAfterSeconds = probe.getNanosToWaitForRefill() / 1_000_000_000;
+	        response.setHeader("Retry-After", String.valueOf(retryAfterSeconds));
+	       // response.sendError(HttpStatus.TOO_MANY_REQUESTS.value(), "Too many requests");
+	        response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+            response.setContentType("application/json");
+            ApiResponse<Void> apiResponse = new ApiResponse<>(429, "Too many requests", null);
+            ObjectMapper mapper = new ObjectMapper();
+            String responseBody = mapper.writeValueAsString(apiResponse);
+            response.getWriter().write(responseBody);
+	        return;
+	    }
+		response.setHeader("X-RateLimit-Limit", "300");
+		response.setHeader("X-RateLimit-Remaining", String.valueOf(probe.getRemainingTokens()));
+		response.setHeader("X-RateLimit-Reset", String.valueOf(
+	        Instant.now().plusNanos(probe.getNanosToWaitForRefill()).getEpochSecond()
+	    ));
 		ipLogService.logIp(clientIp, requestUri, requestParams, "SUCCESS");
 		filterChain.doFilter(request, response);
 	}
