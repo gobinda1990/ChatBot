@@ -58,7 +58,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
             response.getWriter().write(responseBody);
             return;
 		}
-		ConsumptionProbe probe = rateLimiterService.tryConsume(apiKey);
+		ConsumptionProbe probe = rateLimiterService.checkIp(clientIp);
 		if (!probe.isConsumed()) {
 	        long retryAfterSeconds = probe.getNanosToWaitForRefill() / 1_000_000_000;
 	        response.setHeader("Retry-After", String.valueOf(retryAfterSeconds));
