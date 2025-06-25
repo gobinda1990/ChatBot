@@ -71,7 +71,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
             response.getWriter().write(responseBody);
 	        return;
 	    }
-		response.setHeader("X-RateLimit-Limit", "300");
+		response.setHeader("X-RateLimit-Limit", "100");
 		response.setHeader("X-RateLimit-Remaining", String.valueOf(probe.getRemainingTokens()));
 		response.setHeader("X-RateLimit-Reset", String.valueOf(
 	        Instant.now().plusNanos(probe.getNanosToWaitForRefill()).getEpochSecond()
