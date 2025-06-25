@@ -11,6 +11,7 @@ public class HrmsDetails {
 	
 	private String hrmsCd;
 	private String chrgCd;
+	private String chrgNm;
 	private String dg;
 	private String mobNo;
 	private String roles;

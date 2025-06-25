@@ -12,6 +12,7 @@ public class HrmsRowMapper implements RowMapper<HrmsDetails> {
 		HrmsDetails hrdt = new HrmsDetails();
 		hrdt.setHrmsCd(rs.getString("HRMS_CODE"));
 		hrdt.setChrgCd(rs.getString("CHARGE_CD"));
+		hrdt.setChrgNm(rs.getString("CHARGE_NM"));
 		hrdt.setDg(rs.getString("DESIGNATION"));
 		hrdt.setMobNo(rs.getString("MOBILE"));
 		hrdt.setRoles(rs.getString("USR_CATG_NM"));
