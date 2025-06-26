@@ -28,7 +28,6 @@ public class GstinController {
 
 	private final GstService gstService;
 
-//	@GetMapping("/details")
 	@GetMapping("/getDealerDetails")
 	public ResponseEntity<?> getGstinDetails(@RequestParam String gstin,@RequestHeader("X-API-KEY") String apiKey,
             HttpServletRequest request) {
