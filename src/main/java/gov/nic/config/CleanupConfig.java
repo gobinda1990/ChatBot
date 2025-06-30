@@ -1,4 +1,4 @@
-package gov.nic.security;
+package gov.nic.config;
 
 import java.sql.Driver;
 import java.sql.DriverManager;

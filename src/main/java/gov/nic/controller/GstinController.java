@@ -1,7 +1,5 @@
 package gov.nic.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -17,21 +15,21 @@ import gov.nic.service.GstService;
 import gov.nic.util.EncryptionUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 //@RequestMapping("/api/v1/gstin")
 @RequestMapping("/api/gstin")
 @RequiredArgsConstructor
 public class GstinController {
 
-	private static final Logger logger = LoggerFactory.getLogger(GstinController.class);
-
 	private final GstService gstService;
 
 	@GetMapping("/getDealerDetails")
 	public ResponseEntity<?> getGstinDetails(@RequestParam String gstin,@RequestHeader("X-API-KEY") String apiKey,
             HttpServletRequest request) {
-		logger.info("Received  GSTIN request: {}", gstin);
+		log.info("Received  GSTIN request: {}", gstin);
 
 		if (gstin == null || gstin.trim().isEmpty()) {
 			throw new IllegalArgumentException("GSTIN must not be empty");
@@ -50,7 +48,7 @@ public class GstinController {
 			String encrypted = EncryptionUtil.encrypt(json);
 			return ResponseEntity.ok(new ApiResponse<>(200, "Success", encrypted));
 		} catch (Exception ex) {
-			logger.error("Encryption failed", ex);
+			log.error("Encryption failed", ex);
 			throw new EncryptionException("Error encrypting response", ex);
 		}
 	}

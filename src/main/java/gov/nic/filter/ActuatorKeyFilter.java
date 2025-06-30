@@ -1,8 +1,6 @@
 package gov.nic.filter;
 
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -16,15 +14,16 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
+@Slf4j
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 1)
 @RequiredArgsConstructor
-public class ActuatorKeyFilter extends OncePerRequestFilter {
-	
-	private static final Logger logger = LoggerFactory.getLogger(ActuatorKeyFilter.class);
+public class ActuatorKeyFilter extends OncePerRequestFilter {	
+
 
 	private static final String HEADER_ACTUATOR_KEY = "X-ACTUATOR-KEY";
 	private static final String ACTUATOR_PATH_PREFIX = "/ChatBot/actuator/";
@@ -41,7 +40,7 @@ public class ActuatorKeyFilter extends OncePerRequestFilter {
 
 		String suppliedKey = request.getHeader(HEADER_ACTUATOR_KEY);
 		if (!isValidKey(suppliedKey)) {
-			logger.warn("Unauthorized Actuator access to {} with key: {}", request.getRequestURI(), suppliedKey);
+			log.warn("Unauthorized Actuator access to {} with key: {}", request.getRequestURI(), suppliedKey);
 			writeError(response, HttpStatus.UNAUTHORIZED, "Unauthorized - Invalid Actuator Key");
 			return;
 		}
@@ -67,7 +66,7 @@ public class ActuatorKeyFilter extends OncePerRequestFilter {
 	protected boolean shouldNotFilter(HttpServletRequest request) {
 		String uri = request.getRequestURI();
 		boolean skip = !uri.startsWith(ACTUATOR_PATH_PREFIX) || HttpMethod.OPTIONS.matches(request.getMethod());
-		logger.debug("ActuatorKeyFilter.shouldNotFilter URI [{}] => {}", uri, skip);
+		log.debug("ActuatorKeyFilter.shouldNotFilter URI [{}] => {}", uri, skip);
 		return skip;
 	}
 }
