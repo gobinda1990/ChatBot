@@ -16,7 +16,7 @@ public class GstServiceImpl implements GstService {
 	@Override
 	public GstinDetails getGstDet(String gstin) {
 
-		log.info("Enter getGstDet() method with GSTIN:: {}", gstin);
+		log.info("Enter getGstDet() method with GSTIN::");
 
 		GstinDetails details = gstRepository.getGstDet(gstin);
 

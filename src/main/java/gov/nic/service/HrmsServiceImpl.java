@@ -16,7 +16,7 @@ public class HrmsServiceImpl implements HrmsService {
 
 	@Override
 	public List<HrmsDetails> getHrmsDet(String hrms) {
-		log.info("Enter getHrmsDet() method with HRMS Code: {}", hrms);
+		log.info("Enter getHrmsDet() method with HRMS Code:");
 		List<HrmsDetails> details = hrmsRepository.getHrmsDet(hrms);
 		return details;
 	}
