@@ -39,7 +39,7 @@ public class GstinController {
 			throw new IllegalArgumentException("Invalid GSTIN ");
 		}
 
-		GstinDetails details = gstService.getGstDet(gstin);
+		GstinDetails details = gstService.getGstDet(gstin).join();
 		if (details == null) {
 			throw new ResourceNotFoundException("No GSTIN details found for: " + gstin);
 		}

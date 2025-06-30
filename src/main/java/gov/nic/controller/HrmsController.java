@@ -41,7 +41,7 @@ public class HrmsController {
 	    if (!hrmsCode.matches("^\\d{10}$")) {
 	        throw new IllegalArgumentException("Invalid HRMS.");
 	    }
-	    List<HrmsDetails> details = hrmsService.getHrmsDet(hrmsCode);
+	    List<HrmsDetails> details = hrmsService.getHrmsDet(hrmsCode).join();
 	    if (details == null || details.isEmpty()) {
 	        throw new ResourceNotFoundException("No HRMS details found for: " + hrmsCode);
 	    }

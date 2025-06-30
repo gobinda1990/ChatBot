@@ -1,9 +1,11 @@
 package gov.nic.service;
 
+import java.util.concurrent.CompletableFuture;
+
 import gov.nic.model.GstinDetails;
 
 public interface GstService {
 	
-	public GstinDetails getGstDet(String gstin);
+	public CompletableFuture<GstinDetails> getGstDet(String gstin);
 
 }

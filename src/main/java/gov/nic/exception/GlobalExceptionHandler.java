@@ -18,31 +18,27 @@ import gov.nic.model.ApiResponse;
 public class GlobalExceptionHandler {
 
 	private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-	
+
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<ApiResponse<String>> handleIllegalArgument(IllegalArgumentException ex) {
-	    logger.warn("Invalid argument: {}", ex.getMessage());
+		logger.warn("Invalid argument: {}", ex.getMessage());
 
-	    String message = (ex.getMessage() != null && !ex.getMessage().isBlank())
-	            ? ex.getMessage()
-	            : "The request contains invalid or missing parameters. Please check your input and try again.";
+		String message = (ex.getMessage() != null && !ex.getMessage().isBlank()) ? ex.getMessage()
+				: "The request contains invalid or missing parameters. Please check your input and try again.";
 
-	    return ResponseEntity.badRequest()
-	            .body(new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), message, null));
+		return ResponseEntity.badRequest().body(new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), message, null));
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ApiResponse<String>> handleValidationErrors(MethodArgumentNotValidException ex) {
-	    String errorMsg = ex.getBindingResult().getFieldErrors().stream()
-	            .map(error -> error.getField() + ": " + error.getDefaultMessage())
-	            .collect(Collectors.joining(", "));
+		String errorMsg = ex.getBindingResult().getFieldErrors().stream()
+				.map(error -> error.getField() + ": " + error.getDefaultMessage()).collect(Collectors.joining(", "));
 
-	    String message = "Some fields have invalid or missing values. Please correct the following: " + errorMsg;
+		String message = "Some fields have invalid or missing values. Please correct the following: " + errorMsg;
 
-	    logger.warn("Validation error: {}", message);
+		logger.warn("Validation error: {}", message);
 
-	    return ResponseEntity.badRequest()
-	            .body(new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), message, null));
+		return ResponseEntity.badRequest().body(new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), message, null));
 	}
 
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
@@ -58,53 +54,62 @@ public class GlobalExceptionHandler {
 				.body(new ApiResponse<>(HttpStatus.METHOD_NOT_ALLOWED.value(), message, null));
 	}
 
-	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ResponseEntity<ApiResponse<String>> handleNoHandler(NoHandlerFoundException ex) {
-		
-	    logger.warn("No handler found for request URL: {}", ex.getRequestURL());
-	    String message = "The page or service you are trying to access does not exist. Please check the URL and try again.";
-	    return ResponseEntity.status(HttpStatus.NOT_FOUND)
-	            .body(new ApiResponse<>(HttpStatus.NOT_FOUND.value(), message, null));
+
+		logger.warn("No handler found for request URL: {}", ex.getRequestURL());
+		String message = "The page or service you are trying to access does not exist. Please check the URL and try again.";
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(new ApiResponse<>(HttpStatus.NOT_FOUND.value(), message, null));
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ApiResponse<String>> handleResourceNotFound(ResourceNotFoundException ex) {
-	    logger.warn("Resource not found: {}", ex.getMessage());
+		logger.warn("Resource not found: {}", ex.getMessage());
 
-	    String message = "The requested resource could not be found. Please check the input and try again.";
+		String message = "The requested resource could not be found. Please check the input and try again.";
 
-	    return ResponseEntity.status(HttpStatus.NOT_FOUND)
-	            .body(new ApiResponse<>(HttpStatus.NOT_FOUND.value(), message, null));
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(new ApiResponse<>(HttpStatus.NOT_FOUND.value(), message, null));
 	}
-	
+
 	@ExceptionHandler({ DataAccessException.class, DatabaseException.class })
 	public ResponseEntity<ApiResponse<String>> handleDatabaseError(Exception ex) {
-		
-	    logger.error("Database exception occurred", ex.getMessage());
-	    String message = "We're experiencing some technical difficulties accessing the database. "
-	                   + "Please try again later or contact support if the issue persists.";
-	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	            .body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null));
+
+		logger.error("Database exception occurred", ex.getMessage());
+		String message = "We're experiencing some technical difficulties accessing the database. "
+				+ "Please try again later or contact support if the issue persists.";
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null));
 	}
-	
+
+	@ExceptionHandler(ServiceUnavailableException.class)
+	public ResponseEntity<ApiResponse<String>> handleServiceUnable(Exception ex) {
+
+		logger.error("Database exception occurred", ex.getMessage());
+		String message = "Service temporarily unavailable. "
+				+ "Please try again later or contact support if the issue persists.";
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+				.body(new ApiResponse<>(HttpStatus.SERVICE_UNAVAILABLE.value(), message, null));
+	}
+
 	@ExceptionHandler(EncryptionException.class)
 	public ResponseEntity<ApiResponse<String>> handleEncryption(EncryptionException ex) {
-		
-	    logger.error("Encryption error occurred: {}", ex.getMessage(), ex.getMessage());
-	    String message = "We encountered a problem while securing your data. "
-	                   + "Please try again or contact support if the problem continues.";
-	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	            .body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null));
+
+		logger.error("Encryption error occurred: {}", ex.getMessage(), ex.getMessage());
+		String message = "We encountered a problem while securing your data. "
+				+ "Please try again or contact support if the problem continues.";
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null));
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ApiResponse<String>> handleAll(Exception ex) {
-		
-	    logger.error("Unhandled error occurred", ex.getMessage());
-	    String message = "Something went wrong on our end. Please try again later or contact support if the issue persists.";
-	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	            .body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null));
+
+		logger.error("Unhandled error occurred", ex.getMessage());
+		String message = "Something went wrong on our end. Please try again later or contact support if the issue persists.";
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), message, null));
 	}
-	
+
 }

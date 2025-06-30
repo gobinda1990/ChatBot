@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Filter that validates the <code>X-API-KEY</code> header, applies IP‑based
+ * Filter that validates the <code>X-API-KEY</code> header, applies IPbased
  * rate limiting and logs request metadata.
  * <p>
  * 
@@ -37,7 +37,7 @@ import lombok.extern.slf4j.Slf4j;
  * <li>Constructor injection for Spring beans (testable &amp; immutable)</li>
  * <li>Centralised JSON error writing</li>
  * <li>Constants for header names &amp; max quota</li>
- * <li>Skips CORS pre‑flight and non‑API traffic via
+ * <li>Skips CORS preflight and nonAPI traffic via
  * <code>shouldNotFilter</code></li>
  * </ul>
  */
@@ -57,7 +57,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 	@Value("${api.security.key}")
 	private String expectedApiKey;
 
-	private final RateLimiterService rateLimiterService;
+	private final RateLimiterService rateLimiterService;	
 	private final IpLogService ipLogService;
 	private final ObjectMapper objectMapper;
 
@@ -76,16 +76,14 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 			writeError(response, HttpStatus.UNAUTHORIZED, "Unauthorized - Invalid API Key");
 			ipLogService.logIp(clientIp, requestUri, requestParams, "FAIL");
 			return;
-		}
-
+		}			
 		ConsumptionProbe probe = rateLimiterService.checkIp(clientIp);
 		if (!probe.isConsumed()) {
 			setRetryAfterHeader(response, probe);
 			writeError(response, HttpStatus.TOO_MANY_REQUESTS, "Too many requests");
-			ipLogService.logIp(clientIp, requestUri, requestParams, "RATE_LIMIT");
+			ipLogService.logIp(clientIp, requestUri, requestParams, "FAIL");
 			return;
 		}
-
 		setRateLimitHeaders(response, probe);
 		ipLogService.logIp(clientIp, requestUri, requestParams, "SUCCESS");
 		filterChain.doFilter(request, response);
