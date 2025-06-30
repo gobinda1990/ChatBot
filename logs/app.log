@@ -88,3 +88,141 @@
 2025-06-30 11:57:54 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/ChatBot'
 2025-06-30 11:57:54 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Started ChatBotApplication in 0.801 seconds (process running for 196.391)
 2025-06-30 11:57:54 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-06-30 15:22:54 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-06-30 15:22:54 [Thread-24] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-30 15:22:54 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-30 15:22:54 [Thread-24] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-06-30 15:22:54 [Thread-24] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2025-06-30 15:22:55 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Starting ChatBotApplication using Java 17.0.13 with PID 10680 (F:\Java17_Project\ChatBot\target\classes started by user1 in F:\Java17_Project\ChatBot)
+2025-06-30 15:22:55 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-30 15:22:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-06-30 15:22:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JDBC repository interfaces.
+2025-06-30 15:22:55 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-30 15:22:55 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-30 15:22:55 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-06-30 15:22:55 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring embedded WebApplicationContext
+2025-06-30 15:22:55 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 720 ms
+2025-06-30 15:22:56 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2025-06-30 15:22:56 [restartedMain] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-06-30 15:22:56 [restartedMain] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-4 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2025-06-30 15:22:56 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection oracle.jdbc.driver.T4CConnection@26725482
+2025-06-30 15:22:56 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2025-06-30 15:22:56 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-30 15:22:56 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-06-30 15:22:56 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/ChatBot'
+2025-06-30 15:22:56 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Started ChatBotApplication in 1.087 seconds (process running for 12498.334)
+2025-06-30 15:22:56 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  gov.nic.filter.ApiKeyFilter - Request URI: /ChatBot/api/userInfo | Params: hrmsCode=[2007001491]
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  gov.nic.service.IpLogService - Enter into logIp() method:-- 
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  gov.nic.service.IpLogService - Exit from logIp() method:--
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  gov.nic.controller.HrmsController - Received HRMS request: 2007001491
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  gov.nic.service.HrmsServiceImpl - Enter getHrmsDet() method with HRMS Code:
+2025-06-30 15:23:26 [http-nio-8080-exec-1] INFO  g.nic.repository.HrmsRepositoryImpl - Enter getHrmsDet() method with HRMS Code: 2007001491
+2025-06-30 15:23:49 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-06-30 15:23:49 [Thread-1134] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-30 15:23:49 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-30 15:23:49 [Thread-1134] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2025-06-30 15:23:49 [Thread-1134] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2025-06-30 15:23:50 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Starting ChatBotApplication using Java 17.0.13 with PID 10680 (F:\Java17_Project\ChatBot\target\classes started by user1 in F:\Java17_Project\ChatBot)
+2025-06-30 15:23:50 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JDBC repository interfaces.
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-30 15:23:50 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-30 15:23:50 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-06-30 15:23:50 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring embedded WebApplicationContext
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 315 ms
+2025-06-30 15:23:50 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2025-06-30 15:23:50 [restartedMain] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-06-30 15:23:50 [restartedMain] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-5 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2025-06-30 15:23:50 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection oracle.jdbc.driver.T4CConnection@7035a7cd
+2025-06-30 15:23:50 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/ChatBot'
+2025-06-30 15:23:50 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Started ChatBotApplication in 0.63 seconds (process running for 12552.852)
+2025-06-30 15:23:50 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-06-30 15:24:47 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 6 class path changes (0 additions, 0 deletions, 6 modifications)
+2025-06-30 15:24:47 [Thread-1140] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-30 15:24:47 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-30 15:24:47 [Thread-1140] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2025-06-30 15:24:48 [Thread-1140] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2025-06-30 15:24:48 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Starting ChatBotApplication using Java 17.0.13 with PID 10680 (F:\Java17_Project\ChatBot\target\classes started by user1 in F:\Java17_Project\ChatBot)
+2025-06-30 15:24:48 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JDBC repository interfaces.
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-30 15:24:48 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-30 15:24:48 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-06-30 15:24:48 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring embedded WebApplicationContext
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 324 ms
+2025-06-30 15:24:48 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
+2025-06-30 15:24:48 [restartedMain] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-06-30 15:24:48 [restartedMain] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-6 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2025-06-30 15:24:48 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-6 - Added connection oracle.jdbc.driver.T4CConnection@6592d4d4
+2025-06-30 15:24:48 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/ChatBot'
+2025-06-30 15:24:48 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Started ChatBotApplication in 0.693 seconds (process running for 12610.979)
+2025-06-30 15:24:48 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-06-30 15:25:00 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-06-30 15:25:00 [Thread-1145] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-30 15:25:00 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-30 15:25:00 [Thread-1145] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
+2025-06-30 15:25:00 [Thread-1145] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
+2025-06-30 15:25:00 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Starting ChatBotApplication using Java 17.0.13 with PID 10680 (F:\Java17_Project\ChatBot\target\classes started by user1 in F:\Java17_Project\ChatBot)
+2025-06-30 15:25:00 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JDBC repository interfaces.
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-30 15:25:00 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-30 15:25:00 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-06-30 15:25:00 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring embedded WebApplicationContext
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 300 ms
+2025-06-30 15:25:00 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Starting...
+2025-06-30 15:25:00 [restartedMain] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-06-30 15:25:00 [restartedMain] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-7 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2025-06-30 15:25:00 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-7 - Added connection oracle.jdbc.driver.T4CConnection@77ef681c
+2025-06-30 15:25:00 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Start completed.
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/ChatBot'
+2025-06-30 15:25:00 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Started ChatBotApplication in 0.621 seconds (process running for 12623.169)
+2025-06-30 15:25:00 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  gov.nic.filter.ApiKeyFilter - Request URI: /ChatBot/api/userInfo | Params: hrmsCode=[2007001491]
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  gov.nic.service.IpLogService - Enter into logIp() method:-- 
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  gov.nic.service.IpLogService - Exit from logIp() method:--
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  gov.nic.controller.HrmsController - Received HRMS request: 2007001491
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  gov.nic.service.HrmsServiceImpl - Enter getHrmsDet() method with HRMS Code:
+2025-06-30 15:25:09 [http-nio-8080-exec-2] INFO  g.nic.repository.HrmsRepositoryImpl - Enter getHrmsDet() method with HRMS Code: 2007001491
+2025-06-30 15:25:32 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-06-30 15:25:32 [Thread-1150] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-30 15:25:32 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-30 15:25:32 [Thread-1150] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown initiated...
+2025-06-30 15:25:32 [Thread-1150] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown completed.
+2025-06-30 15:25:32 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Starting ChatBotApplication using Java 17.0.13 with PID 10680 (F:\Java17_Project\ChatBot\target\classes started by user1 in F:\Java17_Project\ChatBot)
+2025-06-30 15:25:32 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-30 15:25:32 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-06-30 15:25:32 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JDBC repository interfaces.
+2025-06-30 15:25:32 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-30 15:25:32 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-30 15:25:32 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-06-30 15:25:32 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/ChatBot] - Initializing Spring embedded WebApplicationContext
+2025-06-30 15:25:32 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 276 ms
+2025-06-30 15:25:33 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Starting...
+2025-06-30 15:25:33 [restartedMain] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-06-30 15:25:33 [restartedMain] INFO  com.zaxxer.hikari.pool.PoolBase - HikariPool-8 - Driver does not support get/set network timeout for connections. (Receiver class oracle.jdbc.driver.T4CConnection does not define or inherit an implementation of the resolved method 'abstract int getNetworkTimeout()' of interface java.sql.Connection.)
+2025-06-30 15:25:33 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-8 - Added connection oracle.jdbc.driver.T4CConnection@5ba3c90c
+2025-06-30 15:25:33 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Start completed.
+2025-06-30 15:25:33 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-30 15:25:33 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-06-30 15:25:33 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/ChatBot'
+2025-06-30 15:25:33 [restartedMain] INFO  gov.nic.webapp.ChatBotApplication - Started ChatBotApplication in 0.603 seconds (process running for 12655.454)
+2025-06-30 15:25:33 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged

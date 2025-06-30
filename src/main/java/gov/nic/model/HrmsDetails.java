@@ -13,7 +13,7 @@ public class HrmsDetails {
 	private String chrgCd;
 	private String chrgNm;
 	private String dg;
-	private String mobNo;
+	private String mobileNo;
 	private String roles;
 
 }
