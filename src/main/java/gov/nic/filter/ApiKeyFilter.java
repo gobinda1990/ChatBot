@@ -84,6 +84,10 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 			ipLogService.logIp(clientIp, requestUri, requestParams, "FAIL");
 			return;
 		}
+		if (response instanceof HttpServletResponse) {
+            HttpServletResponse httpResp = (HttpServletResponse) response;
+            httpResp.setHeader("Content-Security-Policy", "default-src 'self'");
+        }
 		setRateLimitHeaders(response, probe);
 		ipLogService.logIp(clientIp, requestUri, requestParams, "SUCCESS");
 		filterChain.doFilter(request, response);
