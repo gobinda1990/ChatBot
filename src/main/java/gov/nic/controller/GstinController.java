@@ -18,9 +18,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RestController
-//@RequestMapping("/api/v1/gstin")
-@RequestMapping("/api/gst")
+//@RestController
+//@RequestMapping("/api/gst")
 @RequiredArgsConstructor
 public class GstinController {
 
