@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy WAR file to container
 COPY target/ChatBot.war app.war
-COPY lib/ojdbc6.jar /app/lib/ojdbc6.jar
+#COPY lib/ojdbc6.jar /app/lib/ojdbc6.jar
 
 # Expose the port your app runs on (usually 8080)
 EXPOSE 8082
