@@ -2,10 +2,12 @@ pipeline {
     agent any 
   tools {
     maven 'maven'  // Use the name you gave in Global Tool Config
+      jdk 'jdk17'    
   }
     environment {
         GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'  
         SONAR_HOST_URL = 'http://10.153.43.8:9000'
+        SONARQUBE_SERVER = 'sonar-server'
     }
 
     stages {
@@ -45,18 +47,22 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonar-server') {  // "MySonarQube" is the name you set in Jenkins global config
-                    
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=ChatBotKey -Dsonar.projectName=ChatBot'
+                withSonarQubeEnv("${SONARQUBE_SERVER}") {
+                    sh '''
+                        mvn sonar:sonar \
+                          -Dsonar.projectKey=ChatBotKey \
+                          -Dsonar.projectName=ChatBot \
+                          -Dsonar.java.binaries=target
+                    '''
                 }
             }
         }        
 
-        stage('Package') {
-            steps {
-                sh 'mvn package -DskipTests'
-            }
-        }        
+        // stage('Package') {
+        //     steps {
+        //         sh 'mvn package -DskipTests'
+        //     }
+        // }        
     }
 
     post {
