@@ -4,9 +4,7 @@ pipeline {
     maven 'maven'  // Use the name you gave in Global Tool Config
   }
     environment {
-        GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'
-        PROJECT_NAME = 'GST_API_R9C'
-        ARTIFACT_NAME = 'GST_API_R9C.jar'
+        GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'        
         SCANNER_HOME = tool 'sonar'
     }
 
@@ -28,7 +26,7 @@ pipeline {
                     -Dpackaging=jar
                 '''
             }
-        }
+            }
         stage('Build') {
       steps {
         sh 'mvn clean install -U'
@@ -48,7 +46,7 @@ pipeline {
         stage('SonarQube Quality Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=GST_API_R9C -Dsonar.projectKey=GST_API_R9CKey -Dsonar.java.binaries=target"
+                    sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=ChatBot -Dsonar.projectKey=ChatBotKey -Dsonar.java.binaries=target"
                 }
             }
         }       
@@ -57,25 +55,7 @@ pipeline {
             steps {
                 sh 'mvn package -DskipTests'
             }
-        }
-
-        // stage('Archive JAR') {
-        //     steps {
-        //         archiveArtifacts artifacts: 'target\\*.jar', fingerprint: true
-        //     }
-        // }
-
-        // stage('Deploy') {
-        //    // when {
-        //   //      branch 'main'
-        //  //   }
-        //     steps {
-        //         bat """
-        //         if not exist "${DEPLOY_DIR}" mkdir "${DEPLOY_DIR}"
-        //         copy /Y target\\*.jar "${DEPLOY_DIR}\\${ARTIFACT_NAME}"
-        //         """
-        //     }
-        // }
+        }        
     }
 
     post {
