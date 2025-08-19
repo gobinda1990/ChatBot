@@ -28,6 +28,7 @@ pipeline {
                     -Dpackaging=jar
                 '''
             }
+        }
         stage('Build') {
       steps {
         sh 'mvn clean install -U'
