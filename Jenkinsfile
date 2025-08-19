@@ -46,15 +46,8 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {  // "MySonarQube" is the name you set in Jenkins global config
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-                        sh '''
-                            $SONAR_SCANNER_HOME/bin/sonar-scanner \
-                              -Dsonar.projectKey=ChatBotKey \
-                              -Dsonar.projectName=ChatBot \
-                              -Dsonar.java.binaries=target \
-                              -Dsonar.login=$SONAR_TOKEN
-                        '''
-                    }
+                    
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=ChatBotKey -Dsonar.projectName=ChatBot'
                 }
             }
         }        
