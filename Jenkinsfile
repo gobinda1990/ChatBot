@@ -4,8 +4,8 @@ pipeline {
     maven 'maven'  // Use the name you gave in Global Tool Config
   }
     environment {
-        GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'        
-        SCANNER_HOME = tool 'sonar'
+        GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'  
+        SONAR_HOST_URL = 'http://10.153.43.8:9000'
     }
 
     stages {
@@ -44,12 +44,21 @@ pipeline {
         }
 
         stage('SonarQube Quality Analysis') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=ChatBot -Dsonar.projectKey=ChatBotKey -Dsonar.java.binaries=target"
+            
+                steps {
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                    sh """
+                        sonar-scanner \
+                          -Dsonar.projectKey=ChatBotKey \
+                          -Dsonar.projectName=ChatBot \
+                          -Dsonar.java.binaries=target \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.login=${SONAR_TOKEN}
+                    """
                 }
             }
-        }       
+         
+        }        
 
         stage('Package') {
             steps {
