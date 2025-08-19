@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh '''
                   mvn install:install-file \
-                    -Dfile=libs/ojdbc6-11.2.0.4.jar \
+                    -Dfile=lib/ojdbc6-11.2.0.4.jar \
                     -DgroupId=com.oracle \
                     -DartifactId=ojdbc6 \
                     -Dversion=11.2.0.4 \
