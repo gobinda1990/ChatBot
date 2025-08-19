@@ -2,7 +2,7 @@ pipeline {
     agent any 
   tools {
     maven 'maven'  // Use the name you gave in Global Tool Config
-      jdk 'jdk17'    
+         
   }
     environment {
         GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'  
