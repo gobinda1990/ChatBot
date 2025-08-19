@@ -7,7 +7,7 @@ pipeline {
     environment {
         GITHUB_REPO = 'https://github.com/gobinda1990/ChatBot.git'  
         SONAR_HOST_URL = 'http://10.153.43.8:9000'
-        SONARQUBE_SERVER = 'sonar-server'
+        SONARQUBE_SERVER = 'MySonarQube'
     }
 
     stages {
