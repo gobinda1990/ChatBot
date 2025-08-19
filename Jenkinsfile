@@ -46,17 +46,19 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv("${SONARQUBE_SERVER}") {
-                    sh '''
-                        mvn sonar:sonar \
-                          -Dsonar.projectKey=ChatBotKey \
-                          -Dsonar.projectName=ChatBot \
-                          -Dsonar.java.binaries=target
-                    '''
-                }
-            }
-        }        
+    steps {
+        withSonarQubeEnv("${SONARQUBE_SERVER}") {
+            sh '''
+                mvn sonar:sonar \
+                  -Dsonar.projectKey=ChatBotKey \
+                  -Dsonar.projectName=ChatBot \
+                  -Dsonar.java.binaries=target \
+                  -Dsonar.host.url=$SONAR_HOST_URL \
+                  -Dsonar.login=$SONAR_AUTH_TOKEN
+            '''
+        }
+    }
+}        
 
         // stage('Package') {
         //     steps {
